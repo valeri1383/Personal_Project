@@ -51,12 +51,12 @@ def login():
         # sending email warning
         time_of_attempt = get_current_time()
         subject = 'WARNING. Unauthorized login attempt'
-        body = f'Unauthorized user - |{username.upper()}| with password - ' \
-               f'|{password.upper()}| has attempt to login to the system ' \
+        body = f'Unauthorized user - | {username.upper()} | with password - ' \
+               f'| {password.upper()} | has attempt to login to the system ' \
                f'at {time_of_attempt}!!!'
         email_message = 'Email with your details has been sent to the security department.'
         text_to_speach(email_message)
-        send_email('valeri1383@gmail.com', 'alpyjsnhgngtipxw', 'valeri1383@abv.bg', subject, body)
+        #send_email('', '', '', subject, body)
 
 
 
@@ -97,7 +97,7 @@ def camera_recording_the_user():
     num = random.randint(1, 100)
     destination_folder = os.path.join(os.environ["USERPROFILE"], "Desktop\\")
     img.save(
-        f"{destination_folder}\Selfie{num}.PNG")  # Save image screenshot at desired location on your computer
+        f"{destination_folder}\Selfie{num}.png")  # Save image screenshot at desired location on your computer
 
     # Close the camera
     subprocess.run('Taskkill /IM WindowsCamera.exe /F', shell=True)
@@ -182,5 +182,4 @@ btn_login.pack()
 
 # Start the Tkinter event loop
 window.mainloop()
-
 
