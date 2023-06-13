@@ -1,4 +1,5 @@
 import csv
+import ctypes
 from datetime import datetime
 import os
 import smtplib
@@ -40,10 +41,11 @@ def login():
 
     # In case of bad user
     else:
-        messagebox.showinfo("USER DOEST EXIST", "User doesn't exist")
-        time.sleep(2)
+        messagebox.showinfo("USER DOEST EXIST", f"User - {username.upper()} doesn't exist")
+        time.sleep(3)
+        window.destroy()
         # voice warning
-        message = 'WARNING Your have attempt unauthorized action! The security department has been informed.' \
+        message = f'WARNING {username} you have attempt unauthorized action! The security department has been informed.' \
            ' Your identity will be captured!'
         text_to_speach(message)
         # opening the camera
@@ -57,6 +59,8 @@ def login():
         email_message = 'Email with your details has been sent to the security department.'
         text_to_speach(email_message)
         #send_email('', '', '', subject, body)
+
+        ctypes.windll.user32.LockWorkStation()
 
 
 
